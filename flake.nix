@@ -1,23 +1,20 @@
 {
   description = "Example nix-darwin system flake";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
-    configuration = { pkgs, ... }: 
-    let
-      pkgs-unstable = import nixpkgs-unstable {
-        system = "aarch64-darwin";
-      };
-    in
-    {
+    configuration = { pkgs, ... }: {
+      system.primaryUser = "tob";
+      
+      nixpkgs.config.allowUnfree = true;
+      
       environment.systemPackages = with pkgs; [
         vim
-        pkgs-unstable.neovim
+        neovim
         git
         git-lfs
         tree
@@ -26,7 +23,7 @@
         btop
         go
         nodejs
-        pkgs-unstable.python314  # unstable から Python 3.14
+        python314
         jdk17
         qemu
         ansible
@@ -46,7 +43,10 @@
         ruff
         go-task
         uv
-        (nerdfonts.override { fonts = [ "Hack" "FiraCode" "Meslo" ]; })
+        obsidian
+        nerd-fonts.hack
+        nerd-fonts.fira-code
+        nerd-fonts.meslo-lg
       ];
       homebrew = {
         enable = true;
