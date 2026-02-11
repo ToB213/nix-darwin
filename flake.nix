@@ -47,6 +47,7 @@
         nerd-fonts.hack
         nerd-fonts.fira-code
         nerd-fonts.meslo-lg
+        discord
       ];
       homebrew = {
         enable = true;
@@ -56,6 +57,7 @@
           "kitty"
           "slack"
           "rectangle"
+          "spotify"
         ];
       };
       nix.settings.experimental-features = "nix-command flakes";
