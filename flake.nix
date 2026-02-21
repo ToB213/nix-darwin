@@ -35,6 +35,11 @@
         rustc
         openldap
         perl
+        rustfmt 
+        clippy
+        pkg-config
+        openssl
+        libiconv
         fish	
         zoxide
         imagemagick
@@ -44,15 +49,21 @@
         go-task
         uv
         obsidian
-        nerd-fonts.hack
-        nerd-fonts.fira-code
-        nerd-fonts.meslo-lg
         discord
-      ];
-      homebrew = {
+        quarto
+        (texlive.combine {
+          inherit (texlive)
+            scheme-medium
+            collection-langjapanese
+            collection-latexextra
+            luatexja
+            lualatex-math
+            unicode-math
+            ;
+        })
+        ];
+        homebrew = {
         enable = true;
-        taps  = [ "quarkdown-labs/quarkdown" ];
-        brews = [ "quarkdown" ];
         casks = [
           "docker"
           "kitty"
@@ -60,6 +71,10 @@
           "rectangle"
           "spotify"
           "battery"
+          "visual-studio-code"
+          "font-hack-nerd-font"
+          "font-fira-code-nerd-font"
+          "font-meslo-lg-nerd-font"
         ];
       };
       nix.settings.experimental-features = "nix-command flakes";
