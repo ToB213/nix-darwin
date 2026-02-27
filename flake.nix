@@ -50,6 +50,7 @@
         uv
         obsidian
         discord
+        gh
         quarto
         (texlive.combine {
           inherit (texlive)
