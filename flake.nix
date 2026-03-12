@@ -88,8 +88,13 @@
         ];
       };
       nix.settings.experimental-features = "nix-command flakes";
-      programs.fish.enable = true;
       users.users.tob.shell = pkgs.fish;
+      programs.fish = {
+        enable = true;
+        interactiveShellInit = ''
+        direnv hook fish | source
+        '';
+        };
       system.configurationRevision = self.rev or self.dirtyRev or null;
       system.stateVersion = 5;
       nixpkgs.hostPlatform = "aarch64-darwin";
