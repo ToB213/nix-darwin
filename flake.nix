@@ -23,6 +23,8 @@
         btop
         go
         nodejs
+        direnv
+        nix-direnv
         python314
         jdk17
         qemu
@@ -49,7 +51,6 @@
         go-task
         uv
         obsidian
-        discord
         gh
         quarto
         (texlive.combine {
@@ -63,6 +64,13 @@
             ;
         })
         ];
+        nix.extraOptions = ''
+        keep-outputs = true
+        keep-derivations = true
+        '';
+
+        programs.direnv.enable = true;
+        
         homebrew = {
         enable = true;
         casks = [
@@ -70,6 +78,7 @@
           "kitty"
           "slack"
           "rectangle"
+          "discord"
           "spotify"
           "battery"
           "visual-studio-code"
