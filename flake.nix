@@ -33,6 +33,8 @@
         ansible
         cloudflared
         jq
+        yazi
+        trash
         hugo
         rust-analyzer
         cargo
@@ -54,19 +56,9 @@
         uv
         obsidian
         gh
-        quarto
-        (texlive.combine {
-          inherit (texlive)
-            scheme-medium
-            collection-langjapanese
-            collection-latexextra
-            luatexja
-            lualatex-math
-            unicode-math
-            ;
-        })
-        ];
-        homebrew = {
+      ];
+
+      homebrew = {
         enable = true;
         casks = [
           "docker"
