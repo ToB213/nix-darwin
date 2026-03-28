@@ -1,11 +1,13 @@
 {
-  description = "Example nix-darwin system flake";
+  description = "nix-darwin system flake";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager}:
   let
     configuration = { pkgs, ... }: {
       system.primaryUser = "tob";
@@ -26,7 +28,7 @@
         direnv
         nix-direnv
         python314
-        jdk17
+        jdk21
         qemu
         ansible
         cloudflared
@@ -64,13 +66,6 @@
             ;
         })
         ];
-        nix.extraOptions = ''
-        keep-outputs = true
-        keep-derivations = true
-        '';
-
-        programs.direnv.enable = true;
-        
         homebrew = {
         enable = true;
         casks = [
@@ -87,22 +82,35 @@
           "font-meslo-lg-nerd-font"
         ];
       };
+
+      users.users.tob.home = "/Users/tob";
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users.tob = import ./home/home.nix;
+
       nix.settings.experimental-features = "nix-command flakes";
-      users.users.tob.shell = pkgs.fish;
+      nix.extraOptions = ''
+        keep-outputs = true
+        keep-derivations = true
+      '';
+      programs.direnv.enable = true;
       programs.fish = {
         enable = true;
         interactiveShellInit = ''
-        direnv hook fish | source
+          direnv hook fish | source
         '';
-        };
-      system.configurationRevision = self.rev or self.dirtyRev or null;
+      };
+      users.users.tob.shell = pkgs.fish;
       system.stateVersion = 5;
       nixpkgs.hostPlatform = "aarch64-darwin";
     };
   in
   {
     darwinConfigurations."tob" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
+      modules = [
+        configuration
+        home-manager.darwinModules.home-manager
+      ];
     };
-  };
+  }; 
 }
