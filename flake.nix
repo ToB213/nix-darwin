@@ -34,7 +34,7 @@
         cloudflared
         jq
         yazi
-        trash
+        trash-cli
         hugo
         rust-analyzer
         cargo
