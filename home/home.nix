@@ -10,6 +10,7 @@
       recursive = true;
     };
     ".config/nvim/init.lua".source = ./dotfiles/nvim/init.lua;
+    ".config/nvim/images/logo.png".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nix-darwin/home/dotfiles/nvim/images/logo.png";
     ".config/nvim/lua" = {
       source = ./dotfiles/nvim/lua;
       recursive = true;
