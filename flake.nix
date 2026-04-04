@@ -55,6 +55,7 @@
         go-task
         uv
         obsidian
+        imagemagick
         gh
       ];
 
