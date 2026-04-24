@@ -21,6 +21,7 @@
         git-lfs
         tree
         wget
+        helmfile
         fastfetch
         btop
         go
