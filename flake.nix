@@ -57,6 +57,9 @@
         obsidian
         imagemagick
         gh
+        terraform
+        kubernetes-helm
+        awscli2
       ];
 
       homebrew = {
