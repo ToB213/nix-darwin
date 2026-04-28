@@ -56,6 +56,7 @@
         go-task
         uv
         obsidian
+        tmux
         imagemagick
         gh
         terraform
