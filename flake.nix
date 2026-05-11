@@ -26,7 +26,6 @@
         btop
         go
         nodejs
-        direnv
         nix-direnv
         python314
         jdk21
@@ -95,9 +94,6 @@
       programs.direnv.enable = true;
       programs.fish = {
         enable = true;
-        interactiveShellInit = ''
-          direnv hook fish | source
-        '';
       };
       users.users.tob.shell = pkgs.fish;
       system.stateVersion = 5;
