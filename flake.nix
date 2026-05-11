@@ -62,6 +62,7 @@
         terraform
         kubernetes-helm
         awscli2
+        zed-editor
       ];
 
       homebrew = {
