@@ -59,7 +59,6 @@
         imagemagick
         gh
         terraform
-        libreoffice
         kubernetes-helm
         awscli2
         zed-editor
@@ -71,6 +70,7 @@
           "docker"
           "kitty"
           "slack"
+          "libreoffice"
           "rectangle"
           "discord"
           "spotify"
