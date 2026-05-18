@@ -59,6 +59,7 @@
         imagemagick
         gh
         terraform
+        libreoffice
         kubernetes-helm
         awscli2
         zed-editor
