@@ -60,6 +60,7 @@
         gh
         terraform
         kubernetes-helm
+        dbeaver-bin
         awscli2
         zed-editor
       ];
