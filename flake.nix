@@ -41,7 +41,7 @@
         rustc
         openldap
         perl
-        rustfmt 
+        rustfmt
         clippy
         pkg-config
         openssl
@@ -70,6 +70,7 @@
         casks = [
           "docker"
           "kitty"
+          "wave"
           "slack"
           "libreoffice"
           "rectangle"
