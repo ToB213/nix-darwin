@@ -56,6 +56,7 @@
         uv
         obsidian
         tmux
+        ghostty-bin
         imagemagick
         gh
         terraform
@@ -63,14 +64,14 @@
         dbeaver-bin
         awscli2
         zed-editor
+        p7zip
+        kubeseal
       ];
 
       homebrew = {
         enable = true;
         casks = [
           "docker"
-          "kitty"
-          "wave"
           "slack"
           "libreoffice"
           "rectangle"
